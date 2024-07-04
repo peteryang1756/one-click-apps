@@ -33,7 +33,7 @@ services:
             SECRET_KEY_BASE: $$cap_chaskiq_secret_key_base
             ADMIN_EMAIL: $$cap_ADMIN_USER_EMAIL
             ADMIN_PASSWORD: $$cap_ADMIN_PASSWORD
-            DATABASE_URL: postgres://chaskiq:$$cap_chaskiq_postgres_password@srv-captain--$$cap_appname-postgres:5432/chaskiq
+            DATABASE_URL: $$cap_chaskiq_db
             REDIS_URL: redis://default:$$cap_chaskiq_redis_password@srv-captain--$$cap_appname-redis:6379
             AWS_ACCESS_KEY_ID: $$cap_chaskiq_aws_key_id
             AWS_SECRET_ACCESS_KEY: $$cap_chaskiq_aws_access_key
@@ -61,7 +61,7 @@ services:
             SECRET_KEY_BASE: $$cap_chaskiq_secret_key_base
             ADMIN_EMAIL: $$cap_ADMIN_USER_EMAIL
             ADMIN_PASSWORD: $$cap_ADMIN_PASSWORD
-            DATABASE_URL: postgres://chaskiq:$$cap_chaskiq_postgres_password@srv-captain--$$cap_appname-postgres:5432/chaskiq
+            DATABASE_URL: $$cap_chaskiq_db
             REDIS_URL: redis://default:$$cap_chaskiq_redis_password@srv-captain--$$cap_appname-redis:6379
             AWS_ACCESS_KEY_ID: $$cap_chaskiq_aws_key_id
             AWS_SECRET_ACCESS_KEY: $$cap_chaskiq_aws_access_key
@@ -82,6 +82,10 @@ caproverOneClickApp:
     variables:
         - id: $$cap_chaskiq_version
           label: Chaskiq Version Tag
+          description: You can use latest tag or check version builds on https://hub.docker.com/r/chaskiq/chaskiq/tags
+          defaultValue: 9009088
+        - id: $$cap_chaskiq_db
+          label: db
           description: You can use latest tag or check version builds on https://hub.docker.com/r/chaskiq/chaskiq/tags
           defaultValue: 9009088
         - defaultValue: 'admin@example.com'
